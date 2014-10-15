@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="US-ASCII">
+<title>ChartJS Sample</title>
+<script src="Chart.js"></script>
+</head>
+<body>
+	
+	<canvas id="MyChart"></canvas>
+	
+	<script>
+	var myLineChart;
+	var count = 0;
+	
+	var buyerData = {
+	labels : ["",""],
+	datasets : [
+		{
+			label : "hello",
+			fillColor : "rgba(172,194,132,0.4)",
+			strokeColor : "#ACC26D",
+			pointColor : "#fff",
+			pointStrokeColor : "#9DB86D",
+			data : [0,0]
+		},
+		
+		{
+			label : "hello2",
+			fillColor : "rgba(172,194,132,0.4)",
+			strokeColor : "#ACC26D",
+			pointColor : "#fff",
+			pointStrokeColor : "#9DB86D",
+			data : [0,0]
+		}
+	]
+	}
+	window.onload=function(){
+		var buyers = document.getElementById('MyChart').getContext('2d');
+    	myLineChart = new Chart(buyers).Line(buyerData, {responsive: true});
+	}
+	
+	function addData(){
+		myLineChart.addData([Math.random()*10,Math.random()*10], count)
+		count++
+		if(count <2){
+			myLineChart.removeData()
+		}
+		
+	}
+	</script>
+	
+	<input type="button" onclick="addData()" value="Press Me"></input>
+	
+
+</body>
+</html>
