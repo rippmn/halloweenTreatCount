@@ -1,6 +1,6 @@
 package com.rippmn.halloween.domain;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
 import javax.persistence.Column;
@@ -17,7 +17,7 @@ public class TrickorTreatEvent {
 	private long id;
 	
 	@Column
-	private Date eventDateTime = new Date(System.currentTimeMillis());
+	private Timestamp eventDateTime = new Timestamp(System.currentTimeMillis());
 	
 	@Column
 	private int count;
@@ -31,7 +31,7 @@ public class TrickorTreatEvent {
 	}
 	
 	public String getTime(){
-		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 		return sdf.format(eventDateTime);
 	}
 	
@@ -41,13 +41,18 @@ public class TrickorTreatEvent {
 	public void setCount(int count) {
 		this.count = count;
 	}
-	public Date getEventDateTime() {
+	public Timestamp getEventDateTime() {
 		return eventDateTime;
 	}
-	public void setEventDateTime(Date eventDateTime) {
+	public void setEventDateTime(Timestamp eventDateTime) {
 		this.eventDateTime = eventDateTime;
 	}
 	
+	public String getYear(){
+		SimpleDateFormat sdf = new SimpleDateFormat("YYYY");
+		return sdf.format(eventDateTime);
+		
+	}
 	
 	
 	
