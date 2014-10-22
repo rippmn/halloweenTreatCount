@@ -112,4 +112,4 @@ insert into tt_event (count, event_date_time) values(2, '2013-10-31 20:20:00');
 insert into tt_event (count, event_date_time) values(1, '2013-10-31 20:30:00');
 insert into tt_event (count, event_date_time) values(1, '2013-10-31 20:53:00');
 
-
+update tt_event set adult=0;

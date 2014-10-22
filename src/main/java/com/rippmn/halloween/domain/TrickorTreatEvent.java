@@ -24,6 +24,12 @@ public class TrickorTreatEvent {
 	@Column
 	private int count;
 	
+	@Column
+	private boolean adult = false;
+	
+	public boolean isAdult(){
+		return adult;
+	}
 	
 	public long getId() {
 		return id;
