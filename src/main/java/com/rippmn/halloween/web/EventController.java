@@ -2,6 +2,7 @@ package com.rippmn.halloween.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,8 +26,8 @@ public class EventController {
 		return repo.findAll();
 	}
 	
-	@RequestMapping("/trickOrTreat")
-	public void trickOrTreat(@RequestParam(value="count", required=true) int count){
+	@RequestMapping(value="/trickOrTreat", method=RequestMethod.POST)
+	public void trickOrTreat( @RequestParam(value="count", required=true) int count){
 		TrickorTreatEvent tte = new TrickorTreatEvent();
 		tte.setCount(count);
 		repo.save(tte);
