@@ -26,6 +26,18 @@ public class EventController {
 		return repo.findAll();
 	}
 	
+	@RequestMapping("/getPriorTTs")
+	public Iterable<TrickorTreatEvent> getPriorTrickOrTreatEvents(){
+		return repo.getPriorTTs();
+	}
+
+	@RequestMapping("/getCurrentTTs")
+	public Iterable<TrickorTreatEvent> getcurrentTrickOrTreatEvents(){
+		return repo.getCurrentTTs();
+	}
+
+	
+	
 	@RequestMapping(value="/trickOrTreat", method=RequestMethod.POST)
 	public void trickOrTreat( @RequestParam(value="count", required=true) int count){
 		TrickorTreatEvent tte = new TrickorTreatEvent();
