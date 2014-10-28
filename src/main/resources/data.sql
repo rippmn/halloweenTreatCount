@@ -1,3 +1,12 @@
+insert into tt_event (count, event_date_time) values(0, '2007-10-31 17:00:00');
+insert into tt_event (count, event_date_time) values(0, '2008-10-31 17:00:00');
+insert into tt_event (count, event_date_time) values(0, '2009-10-31 17:00:00');
+insert into tt_event (count, event_date_time) values(0, '2010-10-31 17:00:00');
+insert into tt_event (count, event_date_time) values(0, '2011-10-31 17:00:00');
+insert into tt_event (count, event_date_time) values(0, '2012-10-31 17:00:00');
+insert into tt_event (count, event_date_time) values(0, '2013-10-31 17:00:00');
+
+
 insert into tt_event (count, event_date_time) values(7, '2007-10-31 18:22:00');
 insert into tt_event (count, event_date_time) values(11, '2007-10-31 18:30:00');
 insert into tt_event (count, event_date_time) values(21, '2007-10-31 18:40:00');
