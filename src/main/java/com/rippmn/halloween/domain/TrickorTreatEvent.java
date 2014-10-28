@@ -26,10 +26,10 @@ public class TrickorTreatEvent {
 	
 	@Column
 	private boolean adult = false;
-	
-	public boolean isAdult(){
-		return adult;
-	}
+//	
+//	public boolean isAdult(){
+//		return adult;
+//	}
 	
 	public long getId() {
 		return id;
@@ -38,10 +38,10 @@ public class TrickorTreatEvent {
 		this.id = id;
 	}
 	
-	public String getTime(){
-		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-		return sdf.format(eventDateTime);
-	}
+//	public String getTime(){
+//		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+//		return sdf.format(eventDateTime);
+//	}
 	
 	public int getCount() {
 		return count;
@@ -56,11 +56,11 @@ public class TrickorTreatEvent {
 		this.eventDateTime = eventDateTime;
 	}
 	
-	public String getYear(){
-		SimpleDateFormat sdf = new SimpleDateFormat("YYYY");
-		return sdf.format(eventDateTime);
-		
-	}
+//	public String getYear(){
+//		SimpleDateFormat sdf = new SimpleDateFormat("YYYY");
+//		return sdf.format(eventDateTime);
+//		
+//	}
 	
 	
 	
