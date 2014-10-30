@@ -1,6 +1,9 @@
 package com.rippmn.halloween.web;
 
+import java.text.SimpleDateFormat;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +18,7 @@ public class EventController {
 	@Autowired
 	private TrickOrTreatEventRepository repo;
 	
+	private static final SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
 	
 	@RequestMapping("/getTT")
 	public TrickorTreatEvent getTreatEvent(@RequestParam(value="id", required=true) long id){
@@ -31,9 +35,9 @@ public class EventController {
 		return repo.getPriorTTs();
 	}
 
-	@RequestMapping("/getCurrentTTs")
-	public Iterable<TrickorTreatEvent> getcurrentTrickOrTreatEvents(){
-		return repo.getCurrentTTs();
+	@RequestMapping("/getCurrentTTs/dateTime/{dateTime}")
+	public Iterable<TrickorTreatEvent> getcurrentTrickOrTreatEvents(@PathVariable String dateTime)throws Exception{
+		return repo.getCurrentTTs(sdf.parse(dateTime));
 	}
 
 	
