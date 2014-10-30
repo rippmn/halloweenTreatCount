@@ -20,7 +20,7 @@ public class Application {
     
     @Bean
     public DataSource getDataSource(){
-    	DriverManagerDataSource dataSource = new DriverManagerDataSource("jdbc:h2:mem:");
+    	DriverManagerDataSource dataSource = new DriverManagerDataSource("jdbc:mysql://mysql01:3306/halloween", "halloween", "passw0rd");
     	return dataSource;
     }
 }
