@@ -35,7 +35,7 @@ public class EventController {
 		return repo.getPriorTTs();
 	}
 
-	@RequestMapping("/getCurrentTTs/dateTime/{dateTime}")
+	@RequestMapping("/getTTsAfter/dateTime/{dateTime}")
 	public Iterable<TrickorTreatEvent> getcurrentTrickOrTreatEvents(@PathVariable String dateTime)throws Exception{
 		return repo.getCurrentTTs(sdf.parse(dateTime));
 	}
