@@ -43,10 +43,22 @@ public class EventController {
 	
 	
 	@RequestMapping(value="/trickOrTreat", method=RequestMethod.POST)
-	public void trickOrTreat( @RequestParam(value="count", required=true) int count){
+	public TrickorTreatEvent trickOrTreat( @RequestParam(value="count", required=true) int count){
 		TrickorTreatEvent tte = new TrickorTreatEvent();
 		tte.setCount(count);
 		repo.save(tte);
+		return tte;
 	}
+	
+//	
+//	@RequestMapping(value="/trickOrTreat", method=RequestMethod.GET)
+//	public TrickorTreatEvent trickOrTreatGet( @RequestParam(value="count", required=true) int count){
+//		tte.setCount(count);
+//		repo.save(tte);
+//		
+//		return "success";
+//		
+//	}
+	
 	
 }
