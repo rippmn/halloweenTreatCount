@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class GenerateEmptyData {
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		String[] years = new String[]{"2014","2013","2012","2011","2010","2009","2008","2007"};
 		String[] hours = new String[]{"17","18","19","20","21"};
 		String[] tenMins = new String[]{"0","1","2","3","4","5"};
@@ -22,6 +22,6 @@ public class GenerateEmptyData {
 		
 		System.out.println(new Date(1414809120000l));
 
-	}
+	}*/
 
 }
