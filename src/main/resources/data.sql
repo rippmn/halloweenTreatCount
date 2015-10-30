@@ -1319,4 +1319,125 @@ insert into tt_event (count, event_date_time) values(2, '2013-10-31 20:20:00');
 insert into tt_event (count, event_date_time) values(1, '2013-10-31 20:30:00');
 insert into tt_event (count, event_date_time) values(1, '2013-10-31 20:53:00');
 
+
+--these are actual 2014 values note they are in GMT...
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13071,0,2,{ts '2014-10-31 22:50:30.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13081,0,4,{ts '2014-10-31 23:04:19.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13091,0,7,{ts '2014-10-31 23:12:02.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13101,0,3,{ts '2014-10-31 23:13:56.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13111,0,2,{ts '2014-10-31 23:16:00.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13121,0,3,{ts '2014-10-31 23:17:01.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13131,0,4,{ts '2014-10-31 23:20:33.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13141,0,3,{ts '2014-10-31 23:26:55.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13151,0,6,{ts '2014-10-31 23:28:56.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13161,0,2,{ts '2014-10-31 23:29:43.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13171,0,4,{ts '2014-10-31 23:32:00.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13181,0,5,{ts '2014-10-31 23:34:24.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13191,0,2,{ts '2014-10-31 23:35:11.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13201,0,4,{ts '2014-10-31 23:45:06.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13211,0,2,{ts '2014-10-31 23:47:19.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13221,0,2,{ts '2014-10-31 23:47:39.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13231,0,11,{ts '2014-10-31 23:48:59.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13241,0,3,{ts '2014-10-31 23:49:24.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13251,0,3,{ts '2014-10-31 23:50:52.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13261,0,4,{ts '2014-10-31 23:52:41.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13271,0,4,{ts '2014-10-31 23:54:24.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13281,0,1,{ts '2014-10-31 23:54:59.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13291,0,4,{ts '2014-10-31 23:56:17.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13301,0,2,{ts '2014-10-31 23:58:27.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13311,0,2,{ts '2014-10-31 23:59:11.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13321,0,7,{ts '2014-11-01 00:02:42.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13331,0,2,{ts '2014-11-01 00:03:10.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13341,0,1,{ts '2014-11-01 00:03:16.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13351,0,3,{ts '2014-11-01 00:08:00.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13361,0,6,{ts '2014-11-01 00:11:40.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13371,0,2,{ts '2014-11-01 00:12:29.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13381,0,4,{ts '2014-11-01 00:15:45.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13391,0,3,{ts '2014-11-01 00:16:07.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13401,0,4,{ts '2014-11-01 00:16:29.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13411,0,2,{ts '2014-11-01 00:18:49.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13421,0,10,{ts '2014-11-01 00:29:03.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13431,0,4,{ts '2014-11-01 00:29:20.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13441,0,2,{ts '2014-11-01 00:30:52.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13451,0,5,{ts '2014-11-01 00:32:38.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13461,0,2,{ts '2014-11-01 00:37:03.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13471,0,4,{ts '2014-11-01 00:40:18.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13481,0,1,{ts '2014-11-01 00:41:08.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13491,0,1,{ts '2014-11-01 00:41:23.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13501,0,1,{ts '2014-11-01 00:41:36.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13511,0,2,{ts '2014-11-01 00:48:21.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13521,0,6,{ts '2014-11-01 00:51:07.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13531,0,2,{ts '2014-11-01 00:53:53.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13541,0,1,{ts '2014-11-01 01:00:11.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13551,0,1,{ts '2014-11-01 01:07:16.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13561,0,2,{ts '2014-11-01 01:12:08.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13571,0,2,{ts '2014-11-01 01:16:02.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13581,0,2,{ts '2014-11-01 01:16:35.'});
+--INSERT INTO tt_event (id,adult,count,event_date_time) VALUES (13591,0,2,{ts '2014-11-01 01:38:56.'});
+
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,2,{ts '2014-10-31 22:50:30.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,4,{ts '2014-10-31 23:04:19.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,7,{ts '2014-10-31 23:12:02.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,3,{ts '2014-10-31 23:13:56.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,2,{ts '2014-10-31 23:16:00.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,3,{ts '2014-10-31 23:17:01.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,4,{ts '2014-10-31 23:20:33.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,3,{ts '2014-10-31 23:26:55.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,6,{ts '2014-10-31 23:28:56.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,2,{ts '2014-10-31 23:29:43.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,4,{ts '2014-10-31 23:32:00.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,5,{ts '2014-10-31 23:34:24.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,2,{ts '2014-10-31 23:35:11.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,4,{ts '2014-10-31 23:45:06.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,2,{ts '2014-10-31 23:47:19.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,2,{ts '2014-10-31 23:47:39.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,11,{ts '2014-10-31 23:48:59.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,3,{ts '2014-10-31 23:49:24.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,3,{ts '2014-10-31 23:50:52.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,4,{ts '2014-10-31 23:52:41.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,4,{ts '2014-10-31 23:54:24.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,1,{ts '2014-10-31 23:54:59.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,4,{ts '2014-10-31 23:56:17.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,2,{ts '2014-10-31 23:58:27.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,2,{ts '2014-10-31 23:59:11.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,7,{ts '2014-11-01 00:02:42.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,2,{ts '2014-11-01 00:03:10.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,1,{ts '2014-11-01 00:03:16.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,3,{ts '2014-11-01 00:08:00.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,6,{ts '2014-11-01 00:11:40.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,2,{ts '2014-11-01 00:12:29.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,4,{ts '2014-11-01 00:15:45.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,3,{ts '2014-11-01 00:16:07.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,4,{ts '2014-11-01 00:16:29.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,2,{ts '2014-11-01 00:18:49.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,10,{ts '2014-11-01 00:29:03.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,4,{ts '2014-11-01 00:29:20.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,2,{ts '2014-11-01 00:30:52.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,5,{ts '2014-11-01 00:32:38.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,2,{ts '2014-11-01 00:37:03.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,4,{ts '2014-11-01 00:40:18.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,1,{ts '2014-11-01 00:41:08.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,1,{ts '2014-11-01 00:41:23.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,1,{ts '2014-11-01 00:41:36.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,2,{ts '2014-11-01 00:48:21.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,6,{ts '2014-11-01 00:51:07.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,2,{ts '2014-11-01 00:53:53.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,1,{ts '2014-11-01 01:00:11.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,1,{ts '2014-11-01 01:07:16.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,2,{ts '2014-11-01 01:12:08.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,2,{ts '2014-11-01 01:16:02.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,2,{ts '2014-11-01 01:16:35.'});
+INSERT INTO tt_event (adult,count,event_date_time) VALUES (0,2,{ts '2014-11-01 01:38:56.'});
+
+--to adjust this date for timezone (-5) see this query for a way to do in place (this is not an update)
+select count, event_date_time, date_sub(event_date_time, INTERVAL 5 HOUR), hour(event_date_time), minute(event_date_time), year(event_date_time)  from tt_event where year(event_date_time) = 2014 and count > 0
+--actual update
+--update tt_event set event_date_time=date_sub(event_date_time, INTERVAL 5 HOUR) where year(event_date_time) = 2014 and count > 0
+
+--this will be helpful in getting a minute rounded time
+select event_date_time, sec_to_time(round(TIME_TO_SEC(event_date_time)/60)*60) from tt_event where year(event_date_time) = 2014 and count > 0
+
+--this rounds to nearest 2 mins
+select event_date_time, sec_to_time(round(TIME_TO_SEC(event_date_time)/120)*120) from tt_event where year(event_date_time) = 2014 and count > 0
+
 update tt_event set adult=0;
