@@ -11,6 +11,7 @@ import java.util.TreeMap;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import com.rippmn.halloween.domain.TrickorTreatEvent;
@@ -43,11 +44,10 @@ public class TheService {
 		 c.set(Calendar.SECOND, 0);
 		 
 		 
-		while(c.getTimeInMillis() < System.currentTimeMillis()-120000l){
+		while(c.getTimeInMillis() < System.currentTimeMillis()){
 			
 			//this is where we call to the thing that updates based upon time  (note the calendar probaby needs to be in the service)
 			this.updateData();
-			c.setTimeInMillis(c.getTimeInMillis()+120000l);
 						
 		}
 
@@ -59,7 +59,10 @@ public class TheService {
 		
 	}
 	
+	@Scheduled(cron="0 */2 * * * *")
 	public void updateData(){
+		
+		System.out.println("running update-"+ c.getTime());
 		
 		Calendar eventCal = Calendar.getInstance();
 		String year;
@@ -102,6 +105,9 @@ public class TheService {
 			}
 			
 		}
+		
+		c.setTimeInMillis(c.getTimeInMillis()+120000l);
+
 	}
 	
 	public Map<String, String> getTotals(){
