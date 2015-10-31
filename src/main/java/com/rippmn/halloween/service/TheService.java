@@ -19,6 +19,8 @@ import com.rippmn.halloween.persistence.TrickOrTreatEventRepository;
 
 @Component
 public class TheService {
+	
+	private static final int DATE_OFFSET = Integer.parseInt(System.getenv("DATE_OFFSET")!=null?System.getenv("DATE_OFFSET"):"0"); 
 
 	@Autowired
 	private TrickOrTreatEventRepository repo;
@@ -28,6 +30,7 @@ public class TheService {
 	private List<Object> labels = new ArrayList<Object>();
 	
 	private Calendar c = Calendar.getInstance();
+	private Calendar labelC = Calendar.getInstance();
 	
 	private static final SimpleDateFormat sdf = new SimpleDateFormat("kk:mm");
 	
@@ -39,10 +42,9 @@ public class TheService {
 		
 		//theData.put("labels", labels);
 		 
-		 c.set(Calendar.HOUR_OF_DAY, 0);
+		 c.set(Calendar.HOUR_OF_DAY, DATE_OFFSET);
 		 c.set(Calendar.MINUTE, 0);
 		 c.set(Calendar.SECOND, 0);
-		 
 		 
 		while(c.getTimeInMillis() < System.currentTimeMillis()){
 			
@@ -61,22 +63,36 @@ public class TheService {
 	
 	@Scheduled(cron="0 */2 * * * *")
 	public void updateData(){
+		labelC.setTimeInMillis(c.getTime().getTime()-(DATE_OFFSET*60*60*1000));
 		
-		System.out.println("running update-"+ c.getTime());
+		System.out.println("running update-"+ c.getTime() +":"+labelC.getTime());
 		
 		Calendar eventCal = Calendar.getInstance();
 		String year;
 		
 		int min = c.get(Calendar.MINUTE);
+		int hour = c.get(Calendar.HOUR_OF_DAY);
 		
-		if(min == 0)
+		 
+		if(min == 0){
 			min = 60;
+			hour =-1;
+			if(hour == -1){
+				hour = 23;
+			}
+		}
+			
 		
 		List<TrickorTreatEvent> events = repo.getEventByTime(c.get(Calendar.HOUR_OF_DAY), min-2, min-1);
+		if(events.size() > 0)
+		{
+			System.out.println(sdf.format(c.getTime()) +":"+events.size());
+		}
 		
-		
+		//@TODO
+		//for labels we should use adjusted label (5 hours less)
 		if(labels.size() > 0 || (events != null && events.size() > 0)){
-			labels.add(sdf.format(c.getTime()));
+			labels.add(sdf.format(labelC.getTime()));
 		}
 		
 		//so if we have labels already we need to transfer totals
@@ -117,6 +133,20 @@ public class TheService {
 		for(String key: theData.keySet()){
 			totals.put(key, theData.get(key).get(theData.get(key).size()-1).toString());
 		}
+		
+		return totals;
+	}
+	
+	public Map<String, List<Object>> getTotalsByTime(){
+		
+		TreeMap<String, List<Object>>	 totals = new TreeMap<String, List<Object>>();
+		
+		totals.put("labels", labels);
+		
+		for(String key: theData.keySet()){
+			totals.put(key, theData.get(key));
+		}
+		
 		
 		return totals;
 	}
