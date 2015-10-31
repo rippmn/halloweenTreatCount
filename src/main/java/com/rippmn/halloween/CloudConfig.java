@@ -13,6 +13,6 @@ public class CloudConfig extends AbstractCloudConfig {
 
 	@Bean
     public DataSource getDataCloudSource(){    	
-		return connectionFactory().dataSource("halloween-mysql-UPSDB");
+		return connectionFactory().dataSource("halloweenTC");
     }
 }
