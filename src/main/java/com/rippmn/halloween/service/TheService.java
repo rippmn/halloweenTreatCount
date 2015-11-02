@@ -3,6 +3,7 @@ package com.rippmn.halloween.service;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,8 @@ import org.springframework.stereotype.Component;
 
 import com.rippmn.halloween.domain.TrickorTreatEvent;
 import com.rippmn.halloween.persistence.TrickOrTreatEventRepository;
+
+import ch.qos.logback.core.net.SyslogOutputStream;
 
 @Component
 public class TheService {
@@ -32,6 +35,8 @@ public class TheService {
 	private Calendar c = Calendar.getInstance();
 	private Calendar labelC = Calendar.getInstance();
 	
+	private Date endTime; 
+	
 	private static final SimpleDateFormat sdf = new SimpleDateFormat("kk:mm");
 	
 	@PostConstruct
@@ -40,15 +45,23 @@ public class TheService {
 		
 		theData = new HashMap<String, List<Object>>();
 		
-		//theData.put("labels", labels);
-		 
-		 c.set(Calendar.HOUR_OF_DAY, DATE_OFFSET);
+		 c.set(Calendar.MONTH, Calendar.OCTOBER);
+		 c.set(Calendar.DATE, 31);
 		 c.set(Calendar.MINUTE, 0);
 		 c.set(Calendar.SECOND, 0);
 		 
-		while(c.getTimeInMillis() < System.currentTimeMillis()){
+		 int endTimeHour = System.getenv("END_HOUR")!=null?Integer.parseInt(System.getenv("END_HOUR")):21;
+		 int startTimeHour = System.getenv("START_HOUR")!=null?Integer.parseInt(System.getenv("END_HOUR")):17;
+		 
+		 
+		 c.set(Calendar.HOUR_OF_DAY, endTimeHour);
+		 
+		 endTime = new Date(c.getTimeInMillis()+(DATE_OFFSET*60*60*1000));
+		 
+		 c.set(Calendar.HOUR_OF_DAY, startTimeHour + DATE_OFFSET);
+		 
+		while(c.getTimeInMillis() <= endTime.getTime() && c.getTimeInMillis() < System.currentTimeMillis()){
 			
-			//this is where we call to the thing that updates based upon time  (note the calendar probaby needs to be in the service)
 			this.updateData();
 						
 		}
@@ -63,9 +76,16 @@ public class TheService {
 	
 	@Scheduled(cron="0 */2 * * * *")
 	public void updateData(){
-		labelC.setTimeInMillis(c.getTime().getTime()-(DATE_OFFSET*60*60*1000));
 		
 		System.out.println("running update-"+ c.getTime() +":"+labelC.getTime());
+		
+		//skip if we are past end time
+		if(c.getTimeInMillis() > endTime.getTime()){
+			return;
+		}
+		
+		labelC.setTimeInMillis(c.getTime().getTime()-(DATE_OFFSET*60*60*1000));
+		
 		
 		Calendar eventCal = Calendar.getInstance();
 		String year;
@@ -76,7 +96,7 @@ public class TheService {
 		 
 		if(min == 0){
 			min = 60;
-			hour =-1;
+			hour--;
 			if(hour == -1){
 				hour = 23;
 			}
@@ -89,8 +109,6 @@ public class TheService {
 			System.out.println(sdf.format(c.getTime()) +":"+events.size());
 		}
 		
-		//@TODO
-		//for labels we should use adjusted label (5 hours less)
 		if(labels.size() > 0 || (events != null && events.size() > 0)){
 			labels.add(sdf.format(labelC.getTime()));
 		}
