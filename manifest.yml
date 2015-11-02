@@ -1,0 +1,12 @@
+---
+applications:
+- name: halloweenTreatCount
+  memory: 512M
+  host: hwtc
+  instances: 1
+  memory: 512M
+  domain: cfapps.io
+  path: build/libs/halloweenCounter-0.0.2-SNAPSHOT.jar
+  services:
+  - halloweenTC
+    
