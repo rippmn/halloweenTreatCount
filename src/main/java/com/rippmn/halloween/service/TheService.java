@@ -18,7 +18,8 @@ import org.springframework.stereotype.Component;
 import com.rippmn.halloween.domain.TrickorTreatEvent;
 import com.rippmn.halloween.persistence.TrickOrTreatEventRepository;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
+//TODO - DOCUMENTION....
+//TODO - make this resetable to restart calcs
 
 @Component
 public class TheService {
