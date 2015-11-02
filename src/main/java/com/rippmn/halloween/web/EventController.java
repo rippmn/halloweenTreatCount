@@ -2,6 +2,7 @@ package com.rippmn.halloween.web;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,6 +90,13 @@ public class EventController {
 		return service.getTotals();
 	}
 	
+	@RequestMapping("/totalsByTime")
+	public Map<String, List<Object>> totalsByTime(){
+		
+		return service.getTotalsByTime();
+	}
+	
+	//TODO - add a method that returns totals based upon an integer
 	
 //	
 //	@RequestMapping(value="/trickOrTreat", method=RequestMethod.GET)
