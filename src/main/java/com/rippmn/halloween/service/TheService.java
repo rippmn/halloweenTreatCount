@@ -83,7 +83,7 @@ public class TheService {
 
 	}
 
-	@Scheduled(cron="0 */5 * * * *")
+	@Scheduled(cron="0 */2 * * * *")
 	public void updateData(){
 
 		System.out.println("running update-"+ c.getTime() +":"+labelC.getTime());
@@ -150,6 +150,7 @@ public class TheService {
 
 		}
 
+		//this needs to be able to deal with different intervals
 		c.setTimeInMillis(c.getTimeInMillis()+120000l);
 
 	}
