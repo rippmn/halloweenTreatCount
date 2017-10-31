@@ -27,6 +27,7 @@ import com.rippmn.halloween.persistence.TrickOrTreatEventRepository;
 @EnableScheduling
 public class TheService {
 
+	//the date offset is to adjust for server times in UTC  (1700 CDT == 2200 UTC, so we adjust all times by the offset of 5 for CENTRAL)
 	private static final int DATE_OFFSET = Integer.parseInt(System.getenv("DATE_OFFSET")!=null?System.getenv("DATE_OFFSET"):"0");
 
 	@Autowired
@@ -57,8 +58,9 @@ public class TheService {
 		 c.set(Calendar.SECOND, 0);
 
 		 //the logic about this is all messed up due to issues with time conversions
+		 //these are fine to use local time as adjustments to UTC happen later
 		 int endTimeHour = System.getenv("END_HOUR")!=null?Integer.parseInt(System.getenv("END_HOUR")):21;
-		 int startTimeHour = System.getenv("START_HOUR")!=null?Integer.parseInt(System.getenv("END_HOUR")):17;
+		 int startTimeHour = System.getenv("START_HOUR")!=null?Integer.parseInt(System.getenv("START_HOUR")):17;
 
 		 //set to end so we can get the end time
 		 c.set(Calendar.HOUR_OF_DAY, endTimeHour);
@@ -81,7 +83,7 @@ public class TheService {
 
 	}
 
-	@Scheduled(cron="0 */2 * * * *")
+	@Scheduled(cron="0 */5 * * * *")
 	public void updateData(){
 
 		System.out.println("running update-"+ c.getTime() +":"+labelC.getTime());
