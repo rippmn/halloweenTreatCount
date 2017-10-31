@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -104,16 +105,18 @@ public class EventController {
 				count = count + tt.getCount();
 			}
 			hm.put(year, count);
-		}
+		}	
 		
 		return hm;
 	}
 
+	@CrossOrigin(origins="*")
 	@RequestMapping("/totals")
 	public Map<String, String> totals(){
 		return service.getTotals();
 	}
-
+	
+	@CrossOrigin(origins="*")
 	@RequestMapping("/totalsByTime")
 	public Map<String, List<Object>> totalsByTime(){
 
@@ -127,7 +130,6 @@ public class EventController {
 
 //
 //	@RequestMapping(value="/trickOrTreat", method=RequestMethod.GET)
-//	public TrickorTreatEvent trickOrTreatGet( @RequestParam(value="count", required=true) int count){
 //		tte.setCount(count);
 //		repo.save(tte);
 //
