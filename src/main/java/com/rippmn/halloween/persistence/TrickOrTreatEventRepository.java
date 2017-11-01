@@ -20,6 +20,10 @@ public interface TrickOrTreatEventRepository extends CrudRepository<TrickorTreat
 	@Query("select tt from TrickorTreatEvent tt where YEAR(tt.eventDateTime) = ?")
 	public List<TrickorTreatEvent> getTtsByYear(Integer year);
 	
+	@Query("select sum(tt.count) from TrickorTreatEvent tt where YEAR(tt.eventDateTime) = ?")
+	public Integer getTtsTotalByYear(Integer year);
+	
+	
 	@Query("select MIN(tt.eventDateTime) from TrickorTreatEvent tt")
 	public Date getMinDate();
 	
