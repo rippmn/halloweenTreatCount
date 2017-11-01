@@ -15,43 +15,78 @@
 	margin: 4px 2px;
 }
 </style>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	function tt(value) {
+		$.ajax({
+			method : "post",
+			url : "/trickOrTreat",
+			data : jQuery.param({
+				count : value
+			}),
+			async : false,
+			success : function(result) {
+				document.getElementById("result").innerHTML = JSON
+						.stringify(result);
+			}
+		})
+	};
 
+	function textTT() {
+		var count = document.getElementById("textcount").value;
+		document.getElementById("textcount").value = "";
+		console.log(count);
+		tt(count);
+	}
+	
+	$(document).ready( function(){
+		$.ajax({
+				method : "get",
+				url : "/thisYear",
+				async : false,
+				success : function(result){
+					document.getElementById("result").innerHTML = JSON
+					.stringify(result);
+				}
+				});
+	});
+</script>
 </head>
 <body>
 	<table>
 		<tr>
-			<td><form action="/trickOrTreat" method="post">
-					<input name="count" value="1" hidden="true" /> <input type="submit"
-						class="medium button" value="1" />
+			<td><form>
+					<input onClick="tt(1);" class="medium button" value="1" />
 				</form></td>
 			<td>&nbsp;</td>
-			<td><form action="/trickOrTreat" method="post">
-					<input name="count" value="2" hidden="true" /> <input type="submit"
-						class="medium button" value="2" />
+			<td><form>
+					<input onClick="tt(2);" class="medium button" value="2" />
 				</form></td>
 		</tr>
 		<tr>
-			<td><form action="/trickOrTreat" method="post">
-					<input name="count" value="3" hidden="true" /> <input type="submit"
-						class="medium button" value="3" />
+			<td><form>
+					<input onClick="tt(3);" class="medium button" value="3" />
 				</form></td>
 			<td style="width: 20px"></td>
-			<td><form action="/trickOrTreat" method="post">
-					<input name="count" value="4" hidden="true" /> <input type="submit"
-						class="medium button" value="4" />
+			<td><form>
+					<input onClick="tt(4);" class="medium button" value="4" />
 				</form></td>
 		</tr>
 		<tr>
-			<td><form action="/trickOrTreat" method="post">
-					<input name="count" value="5" hidden="true" /> <input type="submit"
-						class="medium button" value="5" />
+			<td><form>
+					<input onClick="tt(5);" class="medium button" value="5" />
 				</form></td>
 		</tr>
 	</table>
-	<form action="/trickOrTreat" method="post">
-		<input name="count" type="text"
+	<form>
+		<input name="count" id="textcount" type="text"
 			style="width: 100px; font-size: 24px; padding: 15px 32px;" /> <input
-			type="submit" class="button" value="Submit" />
+			onClick="textTT();" class="medium button" value="Submit" />
 	</form>
+
+	<span style="font-size: 24px"> Total: <span id="result">
+	</span>
+	</span>
 
 </body>
