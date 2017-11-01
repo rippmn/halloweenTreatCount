@@ -60,13 +60,19 @@ public class EventController {
 
 
 	@RequestMapping(value="/trickOrTreat", method=RequestMethod.POST)
-	public TrickorTreatEvent trickOrTreat( @RequestParam(value="count", required=true) int count){
+	public Integer trickOrTreat( @RequestParam(value="count", required=true) int count){
 		TrickorTreatEvent tte = new TrickorTreatEvent();
 		tte.setCount(count);
 		repo.save(tte);
-		return tte;
+		
+		return thisYear();
 	}
 
+	@RequestMapping("/thisYear")
+	public Integer thisYear() {
+		return service.getYearTotal(new GregorianCalendar().get(GregorianCalendar.YEAR));
+	}
+	
 	@RequestMapping("/getTTsByYear/year/{year}")
 	public Iterable<TrickorTreatEvent> getByYear(@PathVariable Integer year)throws Exception{
 		return repo.getTtsByYear(year);
