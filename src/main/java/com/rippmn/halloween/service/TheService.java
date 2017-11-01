@@ -179,5 +179,10 @@ public class TheService {
 
 		return totals;
 	}
+	
+	public Integer getYearTotal(int year) {
+		return repo.getTtsTotalByYear(year);
+		
+	}
 
 }
