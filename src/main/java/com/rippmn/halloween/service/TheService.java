@@ -88,6 +88,13 @@ public class TheService {
 
 		System.out.println("running update-"+ c.getTime() +":"+labelC.getTime());
 
+		//skip not time to go yet
+		if(c.getTimeInMillis() > System.currentTimeMillis()){
+			System.out.println("Not updated as current time before:"+c);
+			return;
+		}
+
+
 		//skip if we are past end time
 		if(c.getTimeInMillis() > endTime.getTime()){
 			System.out.println("After End Time:"+endTime);
