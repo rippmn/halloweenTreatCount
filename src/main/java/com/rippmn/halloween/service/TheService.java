@@ -1,24 +1,15 @@
 package com.rippmn.halloween.service;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-
-import javax.annotation.PostConstruct;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
-import org.springframework.scheduling.annotation.EnableScheduling;
-
-
 import com.rippmn.halloween.domain.TrickorTreatEvent;
 import com.rippmn.halloween.persistence.TrickOrTreatEventRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 //TODO - DOCUMENTION....
 //TODO - make this resetable to restart calcs
@@ -35,7 +26,7 @@ public class TheService {
 
 	private HashMap<String, List<Object>> theData;
 
-	private List<Object> labels = new ArrayList<Object>();
+	private List<Object> labels = new ArrayList<>();
 
 	private Calendar c = Calendar.getInstance();
 	private Calendar labelC = Calendar.getInstance();
@@ -49,7 +40,7 @@ public class TheService {
 		
 		System.out.println("initializing");
 
-		theData = new HashMap<String, List<Object>>();
+		theData = new HashMap<>();
 
 		 //sets the base time
 		 c.set(Calendar.MONTH, Calendar.OCTOBER);
@@ -126,7 +117,7 @@ public class TheService {
 			System.out.println(sdf.format(c.getTime()) +":"+events.size());
 		}
 
-		if(labels.size() > 0 || (events != null && events.size() > 0)){
+		if((labels.size() > 0) || (events.size() > 0)){
 			labels.add(sdf.format(labelC.getTime()));
 		}
 
@@ -150,7 +141,7 @@ public class TheService {
 				yrData.set(yrData.size()-1, ((Integer)yrData.get(yrData.size()-1))+event.getCount());
 
 			}else{
-				yrData = new ArrayList<Object>();
+				yrData = new ArrayList<>();
 				theData.put(year, yrData);
 				yrData.add(event.getCount());
 			}
@@ -158,13 +149,13 @@ public class TheService {
 		}
 
 		//this needs to be able to deal with different intervals
-		c.setTimeInMillis(c.getTimeInMillis()+120000l);
+		c.setTimeInMillis(c.getTimeInMillis()+120000L);
 
 	}
 
 	public Map<String, String> getTotals(){
 
-		TreeMap<String, String> totals = new TreeMap<String, String>();
+		TreeMap<String, String> totals = new TreeMap<>();
 
 		for(String key: theData.keySet()){
 			totals.put(key, theData.get(key).get(theData.get(key).size()-1).toString());
@@ -175,7 +166,7 @@ public class TheService {
 
 	public Map<String, List<Object>> getTotalsByTime(){
 
-		TreeMap<String, List<Object>>	 totals = new TreeMap<String, List<Object>>();
+		TreeMap<String, List<Object>>	 totals = new TreeMap<>();
 
 		totals.put("labels", labels);
 
