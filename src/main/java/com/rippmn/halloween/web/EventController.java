@@ -1,23 +1,13 @@
 package com.rippmn.halloween.web;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.rippmn.halloween.domain.TrickorTreatEvent;
 import com.rippmn.halloween.persistence.TrickOrTreatEventRepository;
 import com.rippmn.halloween.service.TheService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 
 
@@ -30,12 +20,13 @@ public class EventController {
 	private static final SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
 
 	@Autowired
-	TheService service;
+	private TheService service;
 
 
-	@RequestMapping("/getTT")
-	public TrickorTreatEvent getTreatEvent(@RequestParam(value="id", required=true) long id){
-		return repo.findOne(id);
+	@RequestMapping("/getTT/id/{id}")
+	public TrickorTreatEvent getTreatEvent(@PathVariable long id){
+		java.util.Optional<TrickorTreatEvent> ttEvent = repo.findById(id);
+		return ttEvent.orElse(null);
 	}
 
 	@RequestMapping("/getTTs")
@@ -74,7 +65,7 @@ public class EventController {
 	}
 	
 	@RequestMapping("/getTTsByYear/year/{year}")
-	public Iterable<TrickorTreatEvent> getByYear(@PathVariable Integer year)throws Exception{
+	public Iterable<TrickorTreatEvent> getByYear(@PathVariable Integer year){
 		return repo.getTtsByYear(year);
 	}
 
@@ -97,7 +88,7 @@ public class EventController {
 	@RequestMapping("/yearlyTotals")
 	public Map<String, Integer> yearlyTotals(){
 		
-		HashMap<String, Integer> hm = new HashMap<String, Integer>();
+		HashMap<String, Integer> hm = new HashMap<>();
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("YYYY");
 		
