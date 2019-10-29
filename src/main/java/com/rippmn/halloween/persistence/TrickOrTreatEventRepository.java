@@ -11,23 +11,23 @@ import com.rippmn.halloween.domain.TrickorTreatEvent;
 
 public interface TrickOrTreatEventRepository extends CrudRepository<TrickorTreatEvent, Long>{
 
-	@Query("select tt from TrickorTreatEvent tt where tt.eventDateTime >= ?")
-	public List<TrickorTreatEvent> getCurrentTTs(Date d);
+	@Query("select tt from TrickorTreatEvent tt where tt.eventDateTime >= :d")
+	List<TrickorTreatEvent> getCurrentTTs(Date d);
 	
 	@Query("select tt from TrickorTreatEvent tt where tt.eventDateTime < CURRENT_DATE")
-	public List<TrickorTreatEvent> getPriorTTs();
+	List<TrickorTreatEvent> getPriorTTs();
 	
-	@Query("select tt from TrickorTreatEvent tt where YEAR(tt.eventDateTime) = ?")
-	public List<TrickorTreatEvent> getTtsByYear(Integer year);
+	@Query("select tt from TrickorTreatEvent tt where YEAR(tt.eventDateTime) = :year")
+	List<TrickorTreatEvent> getTtsByYear(Integer year);
 	
-	@Query("select sum(tt.count) from TrickorTreatEvent tt where YEAR(tt.eventDateTime) = ?")
-	public Integer getTtsTotalByYear(Integer year);
+	@Query("select sum(tt.count) from TrickorTreatEvent tt where YEAR(tt.eventDateTime) = :year")
+	Integer getTtsTotalByYear(Integer year);
 	
 	
 	@Query("select MIN(tt.eventDateTime) from TrickorTreatEvent tt")
-	public Date getMinDate();
+	Date getMinDate();
 	
-	@Query("select tt from TrickorTreatEvent tt where HOUR(tt.eventDateTime) = ?1 and (MINUTE(tt.eventDateTime) = ?2 or MINUTE(tt.eventDateTime) = ?3)")
-	public List<TrickorTreatEvent> getEventByTime(int hour, int minMinute, int maxMinute);
+	@Query("select tt from TrickorTreatEvent tt where HOUR(tt.eventDateTime) = :hour and (MINUTE(tt.eventDateTime) = :minMinute or MINUTE(tt.eventDateTime) = :maxMinute)")
+	List<TrickorTreatEvent> getEventByTime(int hour, int minMinute, int maxMinute);
 		
 }
