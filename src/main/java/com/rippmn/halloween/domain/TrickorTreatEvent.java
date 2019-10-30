@@ -9,7 +9,7 @@ public class TrickorTreatEvent {
 
 	@Column
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
 	@Column
