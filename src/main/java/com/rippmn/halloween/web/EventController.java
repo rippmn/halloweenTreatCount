@@ -50,6 +50,7 @@ public class EventController {
 	}
 
 
+	@CrossOrigin(origins="*")
 	@RequestMapping(value="/trickOrTreat", method=RequestMethod.POST)
 	public Integer trickOrTreat( @RequestParam(value="count", required=true) int count){
 		TrickorTreatEvent tte = new TrickorTreatEvent();
