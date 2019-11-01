@@ -183,4 +183,8 @@ public class TheService {
 		
 	}
 
+	public List<List<String>> getMaxTimeByYear(){
+		return repo.getLastTimeByYear();
+	}
+
 }

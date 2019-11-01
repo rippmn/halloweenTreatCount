@@ -122,7 +122,10 @@ public class EventController {
 		return service.getTotalsByTime();
 	}
 
-
+        @RequestMapping("/maxTime")
+	public List<List<String>> maxTimeByYear(){
+		return service.getMaxTimeByYear();
+	}
 
 
 	//TODO - add a method that returns totals based upon an integer

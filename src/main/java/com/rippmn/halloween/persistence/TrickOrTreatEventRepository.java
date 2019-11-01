@@ -29,5 +29,8 @@ public interface TrickOrTreatEventRepository extends CrudRepository<TrickorTreat
 	
 	@Query("select tt from TrickorTreatEvent tt where HOUR(tt.eventDateTime) = :hour and (MINUTE(tt.eventDateTime) = :minMinute or MINUTE(tt.eventDateTime) = :maxMinute)")
 	List<TrickorTreatEvent> getEventByTime(int hour, int minMinute, int maxMinute);
+
+	@Query("select TIME(max(tt.eventDateTime)), YEAR(tt.eventDateTime) from TrickorTreatEvent tt group by YEAR(tt.eventDateTime)")
+	List<List<String>> getLastTimeByYear();
 		
 }
