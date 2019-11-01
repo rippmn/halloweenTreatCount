@@ -60,6 +60,7 @@ public class EventController {
 		return thisYear();
 	}
 
+	@CrossOrigin(origins="*")
 	@RequestMapping("/thisYear")
 	public Integer thisYear() {
 		return service.getYearTotal(new GregorianCalendar().get(GregorianCalendar.YEAR));
