@@ -49,17 +49,6 @@ public class EventController {
 		return "Greetings";
 	}
 
-
-	@CrossOrigin(origins="*")
-	@RequestMapping(value="/trickOrTreat", method=RequestMethod.POST)
-	public Integer trickOrTreat( @RequestParam(value="count", required=true) int count){
-		TrickorTreatEvent tte = new TrickorTreatEvent();
-		tte.setCount(count);
-		repo.save(tte);
-		
-		return thisYear();
-	}
-
 	@CrossOrigin(origins="*")
 	@RequestMapping("/thisYear")
 	public Integer thisYear() {
