@@ -25,7 +25,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.test.context.event.annotation.BeforeTestClass;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.util.ReflectionTestUtils;
 
 @RunWith(SpringRunner.class)
 public class NewServiceTrimTest {
@@ -35,7 +37,6 @@ public class NewServiceTrimTest {
 
     @Autowired
     private NewService testService;
-
 
     @TestConfiguration
     static class TestContextConfig {
@@ -48,7 +49,7 @@ public class NewServiceTrimTest {
 
         @Bean
         public Clock getClock() {
-            return Clock.fixed(Instant.parse("2020-10-31T22:06:00Z"), ZoneOffset.UTC);
+            return Clock.systemDefaultZone();
         }
     }
 
@@ -60,6 +61,8 @@ public class NewServiceTrimTest {
     @Test
     public void testNoTrim() {
         
+        ReflectionTestUtils.setField(testService, "clock", Clock.fixed(Instant.parse("2020-11-01T03:06:00Z"), ZoneOffset.UTC));
+
         List<Integer> result = testService.getTotalsByTime();
         System.out.println(result);
         Assert.assertEquals("array size", 150, result.size());
@@ -70,7 +73,7 @@ public class NewServiceTrimTest {
 
     @Test
     public void testListTrim() {
-
+        ReflectionTestUtils.setField(testService, "clock", Clock.fixed(Instant.parse("2020-10-31T22:06:00Z"), ZoneOffset.UTC));
         List<Integer> result = testService.getTotalsByTime();
         System.out.println(result);
         Assert.assertEquals("array size", 5, result.size());
