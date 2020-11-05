@@ -2,16 +2,11 @@ package com.rippmn;
 
 import static org.mockito.Mockito.when;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.TimeZone;
 
 import com.rippmn.halloween.domain.TrickorTreatEvent;
@@ -25,7 +20,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.test.context.event.annotation.BeforeTestClass;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.util.ReflectionTestUtils;
 
@@ -81,28 +75,4 @@ public class NewServiceTrimTest {
             Assert.assertEquals("zero value", 0, integer.intValue());
         }
     }
-
-
-    public static void main(String[] args) {
-        System.out.println(Locale.getDefault());
-        System.out.println(TimeZone.getDefault());
-
-        Clock testClock = Clock.fixed(Instant.parse("2020-10-31T22:06:00Z"), ZoneOffset.UTC);
-
-        System.out.println(testClock.getZone());
-        System.out.println(new Date(testClock.millis()));
-        System.out.println(new Timestamp(testClock.millis()));
-
-        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
-        System.out.println(new Date(testClock.millis()));
-        System.out.println(new Timestamp(testClock.millis()));
-        TimeZone.setDefault(TimeZone.getTimeZone("GMT"));
-        System.out.println(new Date(testClock.millis()));
-        System.out.println(new Timestamp(testClock.millis()));
-        Calendar c = Calendar.getInstance();
-        System.out.println(c.getTime());
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-        System.out.println(sdf.format(c.getTime()));
-    }
-
 }
