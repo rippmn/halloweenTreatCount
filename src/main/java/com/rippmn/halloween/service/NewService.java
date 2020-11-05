@@ -1,6 +1,5 @@
 package com.rippmn.halloween.service;
 
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.Clock;
 import java.util.ArrayList;
@@ -35,7 +34,6 @@ public class NewService {
 
     public NewService() {
         Calendar c = Calendar.getInstance();
-
         c.set(Calendar.HOUR_OF_DAY,
                 (System.getenv("START_HOUR") != null ? Integer.parseInt(System.getenv("START_HOUR")) : 17));
         c.set(Calendar.MINUTE, 0);
@@ -52,14 +50,13 @@ public class NewService {
     }
 
     public List<Integer> getTotalsByTime() {
-
         HashMap<String, Integer> data = new HashMap<String, Integer>();
 
         List<TrickorTreatEvent> tts = repo.getTtsByYear(2020);
         String theBucket;
         Integer count;
         for (TrickorTreatEvent tte : tts) {
-            theBucket = getBucket(tte.getEventDateTime());
+            theBucket = getBucket(tte.getEventDateTime().getTime());
             count = data.get(theBucket);
             if (count == null) {
                 count = 0;
@@ -70,7 +67,7 @@ public class NewService {
         ArrayList<Integer> totals = new ArrayList<Integer>();
         int total = 0;
         //lets try the clock here
-        String lastKey = getBucket(new Timestamp(clock.millis()));
+        String lastKey = getBucket(clock.millis());
         boolean done = false;
         for (String label : this.labels) {
             if (done) {
@@ -89,8 +86,8 @@ public class NewService {
         return totals;
     }
 
-    private String getBucket(Timestamp time) {
-        return DATE_FORMAT.format(new Date(time.getTime() - (time.getTime() % REPORT_INTERVAL) + REPORT_INTERVAL - DATE_OFFSET));
+    private String getBucket(long time) {
+        return DATE_FORMAT.format(new Date(time - (time % REPORT_INTERVAL) + REPORT_INTERVAL - DATE_OFFSET));
     }
 
     public static void main(String[] args) {
