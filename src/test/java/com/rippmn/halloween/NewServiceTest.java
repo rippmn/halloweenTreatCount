@@ -4,8 +4,6 @@ import static org.mockito.Mockito.when;
 
 import java.sql.Timestamp;
 import java.time.Clock;
-import java.time.Instant;
-import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -55,23 +53,6 @@ public class NewServiceTest {
             Assert.assertEquals("zero value", 0, integer.intValue());
         }
     }
-
-    @Test
-    public void testListTrim() {
-        when(mockRepo.getTtsByYear(2020)).thenReturn(new ArrayList<TrickorTreatEvent>());
-        //instead lets rip the bandaid off and just reset env vars to current system time values that make this work
-        
-        Instant.now(Clock.fixed( 
-            Instant.parse("2020-10-31T22:06:00Z"),
-            ZoneOffset.UTC));
-        List<Integer> result = testService.getTotalsByTime();
-        System.out.println(result);
-        Assert.assertEquals("array size", 3, result.size());
-        for (Integer integer : result) {
-            Assert.assertEquals("zero value", 0, integer.intValue());
-        }
-    }
-
 
     @Test
     public void testData() {
