@@ -4,9 +4,12 @@ import static org.mockito.Mockito.when;
 
 import java.sql.Timestamp;
 import java.time.Clock;
+import java.time.Instant;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 
 import com.rippmn.halloween.domain.TrickorTreatEvent;
 import com.rippmn.halloween.persistence.TrickOrTreatEventRepository;
@@ -20,6 +23,7 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.util.ReflectionTestUtils;
 
 @RunWith(SpringRunner.class)
 public class NewServiceTest {
@@ -32,19 +36,27 @@ public class NewServiceTest {
     @TestConfiguration
     static class TestContextConfig {
 
+        // this bean just initialize the time zone
+        @Bean
+        public String initTime() {
+            TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+            return "";
+        }
+
         @Bean
         public NewService newService() {
             return new NewService();
         }
 
         @Bean
-        public Clock getClock(){
+        public Clock getClock() {
             return Clock.systemDefaultZone();
         }
     }
 
     @Test
     public void testNodata() {
+        ReflectionTestUtils.setField(testService, "clock", Clock.fixed(Instant.parse("2020-11-01T03:06:00Z"), ZoneOffset.UTC));
         when(mockRepo.getTtsByYear(2020)).thenReturn(new ArrayList<TrickorTreatEvent>());
         List<Integer> result = testService.getTotalsByTime();
         System.out.println(result);
@@ -56,6 +68,7 @@ public class NewServiceTest {
 
     @Test
     public void testData() {
+        ReflectionTestUtils.setField(testService, "clock", Clock.fixed(Instant.parse("2020-11-01T03:06:00Z"), ZoneOffset.UTC));
         ArrayList<TrickorTreatEvent> ttes = new ArrayList<TrickorTreatEvent>();
         ttes.add(new TrickorTreatEvent());
         ttes.get(0).setCount(10);
@@ -78,6 +91,7 @@ public class NewServiceTest {
     @Test
     public void testData2() {
         ArrayList<TrickorTreatEvent> ttes = new ArrayList<TrickorTreatEvent>();
+        ReflectionTestUtils.setField(testService, "clock", Clock.fixed(Instant.parse("2020-11-01T03:06:00Z"), ZoneOffset.UTC));
         ttes.add(new TrickorTreatEvent());
         ttes.add(new TrickorTreatEvent());
         ttes.add(new TrickorTreatEvent());
@@ -105,6 +119,29 @@ public class NewServiceTest {
         }
     }
 
-    
+    @Test
+    public void testNoTrim() {
+        when(mockRepo.getTtsByYear(2020)).thenReturn(new ArrayList<TrickorTreatEvent>());
+        ReflectionTestUtils.setField(testService, "clock", Clock.fixed(Instant.parse("2020-11-01T03:06:00Z"), ZoneOffset.UTC));
+
+        List<Integer> result = testService.getTotalsByTime();
+        System.out.println(result);
+        Assert.assertEquals("array size", 150, result.size());
+        for (Integer integer : result) {
+            Assert.assertEquals("zero value", 0, integer.intValue());
+        }
+    }
+
+    @Test
+    public void testListTrim() {
+        when(mockRepo.getTtsByYear(2020)).thenReturn(new ArrayList<TrickorTreatEvent>());
+        ReflectionTestUtils.setField(testService, "clock", Clock.fixed(Instant.parse("2020-10-31T22:06:00Z"), ZoneOffset.UTC));
+        List<Integer> result = testService.getTotalsByTime();
+        System.out.println(result);
+        Assert.assertEquals("array size", 5, result.size());
+        for (Integer integer : result) {
+            Assert.assertEquals("zero value", 0, integer.intValue());
+        }
+    }
 
 }
