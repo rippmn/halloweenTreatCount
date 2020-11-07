@@ -18,8 +18,8 @@ public class TrickorTreatEvent {
 	@Column
 	private int count;
 	
-	@Column
-	private boolean adult = false;
+//	@Column
+//	private boolean adult = false;
 //	
 //	public boolean isAdult(){
 //		return adult;
